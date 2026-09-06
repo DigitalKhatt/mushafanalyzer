@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "component_reassignments": [
+    {
+      "page": 411,
+      "line": 13,
+      "from_word": 2,
+      "to_word": 3,
+      "selector": {
+        "component_type": "body",
+        "ordinal": 2,
+        "order": "right_edge_descending"
+      },
+      "preconditions": {
+        "from_observed_minus_expected": 0,
+        "to_expected_minus_observed": 1
+      },
+      "postconditions": {
+        "from_component_difference": -1,
+        "to_component_difference": 0
+      },
+      "reason": "Kaf+Reh of كريم taken as the Jeem of زوج; the Jeem is fused with the Waw so both readings cost the same and the boundary gap decides"
+    },
+    {
+      "page": 525,
+      "line": 10,
+      "from_word": 9,
+      "to_word": 8,
+      "selector": {
+        "component_type": "non_body",
+        "ordinal": 0,
+        "order": "right_edge_descending"
+      },
+      "preconditions": {
+        "from_observed_minus_expected": 1,
+        "to_expected_minus_observed": 1
+      },
+      "postconditions": {
+        "from_component_difference": 0,
+        "to_component_difference": 0
+      },
+      "reason": "Sukun belongs to previous word but overlaps initial kaf"
+    },
+    {
+      "page": 549,
+      "line": 9,
+      "from_word": 4,
+      "to_word": 5,
+      "selector": {
+        "component_type": "non_body",
+        "ordinal": 3,
+        "order": "right_edge_descending"
+      },
+      "preconditions": {
+        "from_observed_minus_expected": 1,
+        "to_expected_minus_observed": 1
+      },
+      "postconditions": {
+        "from_component_difference": 0,
+        "to_component_difference": 0
+      },
+      "reason": "Kasra of Ibrahim overlaps the preceding word fi"
+    }
+  ]
+}

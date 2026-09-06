@@ -1,0 +1,1156 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "name": "kaf-initial-zigzag",
+      "letters": ["ك"],
+      "forms": ["initial"],
+      "weight": 1.0,
+      "landmarks": [],
+      "steps": [
+        {
+          "kind": "x-right",
+          "target": 0.45,
+          "tolerance": 0.35,
+          "minStrength": 0.3,
+          "optional": false
+        },
+        {
+          "kind": "x-left",
+          "target": 0.72,
+          "tolerance": 0.3,
+          "minStrength": 0.3,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "lam-alef",
+      "letters": ["ل", "ا"],
+      "forms": ["initial", "final"],
+      "weight": 4.0,
+      "landmarks": [0.52],
+      "steps": [
+        {
+          "kind": "double-high-branch",
+          "target": 0.45,
+          "tolerance": 0.35,
+          "minStrength": 2.0,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "beh-hah-family",
+      "letters": ["بتثني", "جحخ"],
+      "forms": ["initial", "medial"],
+      "weight": 4.0,
+      "landmarks": [0.58],
+      "steps": [
+        {
+          "kind": "peak",
+          "target": 0.22,
+          "tolerance": 0.24,
+          "minStrength": 0.5,
+          "optional": true
+        },
+        {
+          "kind": "high-branch",
+          "target": 0.34,
+          "tolerance": 0.24,
+          "minStrength": 2.5,
+          "optional": false
+        },
+        {
+          "kind": "peak",
+          "target": 0.9,
+          "tolerance": 0.18,
+          "minStrength": 0.5,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "elasticBodyTemplates": [
+    {
+      "name": "lam-alef-core",
+      "letters": ["ل", "ا"],
+      "forms": ["initial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "double-high-branch",
+          "minStrength": 2.0
+        }
+      ]
+    },
+    {
+      "name": "lam-alef-separated-stems",
+      "letters": ["ل", "ا"],
+      "forms": ["initial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "high-branch",
+          "minStrength": 1.8
+        },
+        {
+          "kind": "high-branch",
+          "minStrength": 1.8
+        }
+      ]
+    },
+    {
+      "name": "kaf-alef-zigzag",
+      "letters": ["ك", "ا"],
+      "forms": ["initial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "zigzag-branch",
+          "minStrength": 0.5
+        }
+      ]
+    },
+    {
+      "name": "kaf-alef-separated-stems",
+      "letters": ["ك", "ا"],
+      "forms": ["initial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "high-branch",
+          "minStrength": 3.0
+        },
+        {
+          "kind": "high-branch",
+          "minStrength": 3.0
+        }
+      ]
+    },
+    {
+      "name": "meem-init",
+      "letters": ["م"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {
+          "kind": "branch",
+          "minStrength": 2.0
+        },
+        {
+          "kind": "branch",
+          "minStrength": 2.0
+        }
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1
+      }
+    },
+    {
+      "name": "heh-medi-two-loop",
+      "letters": ["ه"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {
+          "kind": "branch",
+          "minStrength": 1.0
+        },
+        {
+          "kind": "branch",
+          "minStrength": 1.0
+        },
+        {
+          "kind": "branch",
+          "minStrength": 1.0
+        }
+      ],
+      "minLoops": 2,
+      "maxLoops": 2,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.5
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.2,
+        "enforce":true
+      }
+    },
+    {
+      "name": "heh-medial-open",
+      "letters": ["ه"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 1.0},
+        {"kind": "branch", "minStrength": 0.5}
+      ],
+      "maxLoops": 0,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.5
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "seen-init",
+      "letters": ["سش"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "start"},
+        {
+          "kind": "valley",
+          "minStrength": 0.1
+        },
+        {
+          "kind": "peak",
+          "minStrength": 0.1
+        },
+        {
+          "kind": "valley",
+          "minStrength": 0.1
+        },
+        {
+          "kind": "peak",
+          "minStrength": 0.1
+        }
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "occurrence": "last",
+        "offsetStrokeWidths": 0.5,
+        "enforce":true
+      }
+    },
+    {
+      "name": "waw-fina",
+      "letters": ["و"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {
+          "kind": "branch",
+          "minStrength": 1.5
+        },
+        {
+          "kind": "valley",
+          "minStrength": 0
+        }
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "offsetStrokeWidths": -0.5
+      }
+    },
+    {
+      "name": "noon-final",
+      "letters": ["ن"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {
+          "kind": "branch",
+          "minStrength": 0.4
+        },
+        {
+          "kind": "valley",
+          "minStrength": 0.4
+        }
+      ]
+    },    
+    {
+      "name": "lam-init",
+      "letters": ["ل"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "start", "minStrength": 1.5}
+      ]
+    },
+    {
+      "name": "lam-init-big",
+      "letters": ["ل"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "start", "minStrength": 0},
+        {"kind": "high-branch", "minStrength": 1},
+        {"kind": "x-left", "minStrength": 2}
+      ]
+    },
+    {
+      "name": "lam-medi",
+      "letters": ["ل"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "high-branch", "minStrength": 3.0}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "high-branch",
+        "offsetStrokeWidths": -0.5
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "high-branch",
+        "offsetStrokeWidths": 1.0,
+        "enforce":true
+      }
+    },
+     {
+      "name": "lam-fina",
+      "letters": ["ل"],
+      "forms": ["final"],
+      "requiredEvents": [        
+        {"kind": "branch", "minStrength": 4},
+        {"kind": "valley", "minStrength": 1}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "offsetStrokeWidths": -0.5
+      }
+    },
+    {
+      "name": "beh-init",
+      "letters": ["بتثنىي"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "start"}
+      ],
+       "exit": {
+        "method": "event-offset",
+        "anchorEvent": "start",
+        "offsetStrokeWidths": 1.0,
+        "enforce":true
+      }
+    },
+    {
+      "name": "beh-medi",
+      "letters": ["بتثنىي"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "peak", "minStrength": 0.2}
+      ],
+      "maxLoops":0,
+      "beforeEvents":[
+        {"kind": "valley", "minStrength": 0.2}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "offsetStrokeWidths": -1.0,
+        "enforce":true
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "offsetStrokeWidths": 1.0,
+        "enforce":true
+      }
+    },
+    {
+      "name": "beh-medi-ii",
+      "letters": ["بتثنىي"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "peak", "minStrength": 0.2}
+      ],
+      "maxLoops":0,
+      "afterEvents":[
+        {"kind": "valley", "minStrength": 0.2}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "offsetStrokeWidths": -1.0,
+        "enforce":true
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "offsetStrokeWidths": 1.0,
+        "enforce":true
+      }
+    },
+    {
+      "name": "beh-medi-before-reh",
+      "letters": ["بتثنىي"],
+      "forms": ["medial"],
+      "nextLetters": ["رز"],
+      "nextForms": ["final"],
+      "priority": 1,
+      "requiredEvents": [{"kind": "branch", "minStrength": 1}],
+      "maxLoops": 0,
+      "nextEvents": [{"kind": "branch", "minStrength": 0.1}],
+      "entry": {"method": "event-offset", "anchorEvent": "branch", "offsetStrokeWidths": -1.0, "enforce": true},
+      "exit":  {"method": "event-offset", "anchorEvent": "branch", "offsetStrokeWidths": 0.5,  "enforce": true}
+    },
+    {
+      "name": "beh-fina",
+      "letters": ["بتث"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.5},
+        {"kind": "valley", "minStrength": 1}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "offsetStrokeWidths": -0.5,
+        "enforce":true
+      }
+    },
+    {
+      "name": "heh-fina",
+      "letters": ["هة"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2},
+        {"kind": "branch", "minStrength": 2}
+      ],
+      "minLoops":1,
+       "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "offsetStrokeWidths": -1.0
+      }
+    },
+    {
+      "name": "meem-fina",
+      "letters": ["م"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.5},
+        {
+          "kind": "peak",
+          "minStrength": 0.2,
+          "gapFromPrevious": {
+            "minStrokeWidths": 0.5,
+            "maxStrokeWidths": 3.5
+          }
+        },
+        {
+          "kind": "end", "minStrength": 0.2
+        }
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      }
+    },
+    {
+      "name": "meem-fina-tail",
+      "letters": ["م"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2},
+        {
+          "kind": "branch",
+          "minStrength": 2,
+          "gapFromPrevious": {
+            "minStrokeWidths": 0,
+            "maxStrokeWidths": 4.0
+          }
+        }
+      ],      
+      "minLoops":1,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      }
+    },
+     {
+      "name": "meem-fina-after-heh-init",
+      "letters": ["م"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.6},
+        {
+          "kind": "continuation", "minStrength": 0.4,"adjacent": true
+        }
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      }
+    },
+    {
+      "name": "ayn-init",
+      "letters": ["عغ"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "offsetStrokeWidths": 0.5,
+        "enforce": true
+      }
+    },
+    {
+      "name": "ayn-medi",
+      "letters": ["عغ"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.5}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": -2,
+        "enforce":true
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 2,
+        "enforce":true
+      }
+    },
+    {
+      "name": "ayn-fina",
+      "letters": ["عغ"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "peak", "minStrength": 1.0},
+        {"kind": "end", "minStrength": 6.0}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "offsetStrokeWidths": -1,
+        "enforce": true
+      }
+    },
+    {
+      "name": "fa-init",
+      "letters": ["فق"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "start", "minStrength": 2.0}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "start",        
+        "offsetStrokeWidths": 1,
+        "enforce":true
+      }
+    },
+    {
+      "name": "fa-medi",
+      "letters": ["فق"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 3},
+        {"kind": "branch", "minStrength": 3}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 0.8
+      }
+    },
+    {
+      "name": "fa-fina",
+      "letters": ["ف"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 4.0},
+        {"kind": "branch", "minStrength": 4.0},
+        {"kind": "valley", "minStrength": 0.8}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1
+      }
+    },
+    {
+      "name": "qaf-fina",
+      "letters": ["ق"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 4.0},
+        {"kind": "valley", "minStrength": 1.2}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": -0.5
+      }
+    },
+    {
+      "name": "dal-final",
+      "letters": ["دذ"],
+      "forms": ["final"],
+      "requiredEvents": [       
+        {"kind": "branch", "minStrength": 2}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": -1
+      }
+    },
+    {
+      "name": "reh-fina",
+      "letters": ["زر"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.1},
+        {
+          "kind": "valley",
+          "minStrength": 0,
+          "gapFromPrevious": {
+            "minStrokeWidths": 2,
+            "maxStrokeWidths": 8
+          }
+        }   
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -0.5,
+        "enforce": true
+      }
+    },
+    {
+      "name": "reh-fina-ii",
+      "letters": ["زر"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.1},
+        {"kind": "continuation", "minStrength": 0,
+        "gapFromPrevious": {"minStrokeWidths": 1, "maxStrokeWidths": 9}}
+      ],
+      "entry": {"method": "event-offset", "anchorEvent": "branch",
+                "occurrence": "first", "offsetStrokeWidths": -0.5, "enforce": true}
+    },
+    {
+      "name": "kaf-init",
+      "letters": ["ك"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "x-right", "minStrength": 0.5},
+        {"kind": "x-left", "minStrength": 0.5}
+      ]
+    },
+    {
+      "name": "kaf-init-bigarm",
+      "letters": ["ك"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "continuation", "minStrength": 18},
+        {"kind": "valley", "minRelief": 0.6}
+      ]
+    },
+    {
+      "name": "kaf-medi-zigzag",
+      "letters": ["ك"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "zigzag-branch", "minStrength": 0.5},
+        {"kind": "valley", "minStrength": 0.5}
+      ],
+      "entry": {"method": "event-offset", "anchorEvent": "zigzag-branch",
+                "offsetStrokeWidths": -1.0},
+      "exit": {"method": "branch-reach", "anchorEvent": "zigzag-branch",
+         "offsetStrokeWidths": 1.0, "enforce": true}
+    },
+    {
+      "name": "kaf-medi",
+      "letters": ["ك"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "high-branch", "minStrength": 3}
+      ],      
+      "entry": {"method": "event-offset", "anchorEvent": "high-branch",
+                "offsetStrokeWidths": -6.0},
+      "minEntryGapStrokeWidths": 0.5,
+      "exit": {"method": "branch-reach", "anchorEvent": "high-branch",
+         "offsetStrokeWidths": 1.0, "enforce": true}
+    },    
+    {
+      "name": "kaf-fina",
+      "letters": ["ك"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 4.0},        
+        {"kind": "valley", "minStrength": 1}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": -1.0
+      }
+    },
+    {
+      "name": "sad-init",
+      "letters": ["ضص"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 1.0},
+        {"kind": "peak", "minStrength": 0.4}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "sad-init-beforeyeh",
+      "letters": ["ضص"],
+      "forms": ["initial"],
+      "nextLetters": ["يئى"],
+      "nextForms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0},        
+        {"kind": "peak", "minStrength": 0.4}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "sad-medi",
+      "letters": ["صض"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 0.8},
+        {"kind": "peak", "minStrength": 0.4}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "sad-medi-beforeyeh",
+      "letters": ["صض"],
+      "forms": ["medial"],
+      "nextLetters": ["يئى"],
+      "nextForms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0},        
+        {"kind": "peak", "minStrength": 0.4}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "sad-fina",
+      "letters": ["صض"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 0.5},
+        {"kind": "valley", "minStrength": 1}
+      ],
+      "minLoops":1,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      }
+    },
+    {
+      "name": "alef-fina",
+      "letters": ["اٱ"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "terminal-ascent", "minStrength": 1.5}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "terminal-ascent"
+      }
+    },
+    {
+      "name": "meem-medi",
+      "letters": ["م"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2},
+        {"kind": "branch", "minStrength": 2}
+      ],
+      "minLoops":1,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "meem-medi-no-loop",
+      "letters": ["م"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.3},
+        {"kind": "branch", "minStrength": 0.5}
+      ],
+      "maxLoops":0,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },    
+    {
+      "name": "hah-init-loop",
+      "letters": ["جحخ"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2},
+        {"kind": "branch", "minStrength": 2}
+      ],
+      "minLoops":1,
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 2
+      }
+    },
+    {
+      "name": "hah-init",
+      "letters": ["جحخ"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 2
+      }
+    },    
+    {
+      "name": "hah-medi",
+      "letters": ["جحخ"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.4},
+        {"kind": "branch", "minStrength": 2}
+      ],
+       "exit": {"method": "branch-reach", "anchorEvent": "branch", "offsetStrokeWidths": 0.0, "enforce": false}
+    },  
+    {
+      "name": "hah-fina",
+      "letters": ["جحخ"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.3},
+        {"kind": "branch", "minStrength": 2},
+        {"kind": "continuation", "minStrength": 8}
+
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -2.0,
+        "enforce":true
+      }
+    },    
+    {
+      "name": "seen-medi",
+      "letters": ["سش"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.3},
+        {"kind": "branch", "minStrength": 0.5},
+        {"kind": "valley", "minStrength": 0.1},
+        {"kind": "branch", "minStrength": 0.3}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },    
+     {
+      "name": "seen-medi-beforeyeh",
+      "letters": ["سش"],
+      "forms": ["medial"],
+      "nextLetters": ["يئى"],
+      "nextForms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.5},
+        {"kind": "branch", "minStrength": 0.5},
+        {"kind": "valley", "minStrength": 0.1},
+        {"kind": "peak", "minStrength": 0.5}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      },
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "peak",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },    
+    {
+      "name": "seen-fina",
+      "letters": ["سش"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 0.4},
+        {"kind": "branch", "minStrength": 0.4},
+        {"kind": "branch", "minStrength": 0.3},
+        {"kind": "valley", "minStrength": 1}
+      ],
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1.0
+      }
+    },    
+    {
+      "name": "tah-zah-initial-stem",
+      "letters": ["طظ"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 1.5},
+        {"kind": "branch", "minStrength": 1.5}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 0.5
+      }
+    },
+    {
+      "name": "tah-medi",
+      "letters": ["طظ"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 1.0},
+        {"kind": "branch", "minStrength": 0.5}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 0.5
+      }
+    },
+     {
+      "name": "tah-fina",
+      "letters": ["طظ"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 3.0},
+        {"kind": "branch", "minStrength": 3.0}
+      ],
+      "minLoops":1,
+      "entry": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "first",
+        "offsetStrokeWidths": -1
+      }
+    },
+    {
+      "name": "tatweel-medial-run",
+      "letters": ["ـ"],
+      "forms": ["medial"],
+      "orderedMatch": false,
+      "requiredEvents": [
+        {"kind": "valley", "minStrength": 0.5}
+      ]
+    },
+    {
+      "name": "teh-marbuta-final-head",
+      "letters": ["ة"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "zigzag-branch", "minStrength": 0.35},
+        {"kind": "valley", "minStrength": 0.5}
+      ]
+    },
+    {
+      "name": "heh-init",
+      "letters": ["ه"],
+      "forms": ["initial"],
+      "requiredEvents": [
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0},
+        {"kind": "branch", "minStrength": 2.0}
+      ],
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 1.0
+      }
+    },
+    {
+      "name": "yeh-fina",
+      "letters": ["يى"],
+      "forms": ["final"],
+      "requiredEvents": [
+        {"kind": "x-right", "minStrength": 1},
+        {"kind": "x-left", "minStrength": 1},
+        {"kind": "valley", "minStrength": 1}
+      ]
+    },
+    {
+      "name": "tatweel-medial-high-run",
+      "letters": ["ـ"],
+      "forms": ["medial"],
+      "requiredEvents": [
+        {"kind": "high-branch", "minStrength": 0.0},
+        {"kind": "valley", "minStrength": 0.5}
+      ]
+    },
+    {
+      "name": "beh-hah-core",
+      "letters": ["بتثنيمل", "جحخ"],
+      "forms": ["initial", "medial"],
+      "requiredEvents": [
+        {
+          "kind": "high-branch",
+          "minStrength": 2.5
+        }
+      ]
+    },
+    {
+      "name": "beh-heh-init",
+      "letters": ["بتثني", "ه"],
+      "forms": ["initial", "medial"],
+      "requiredEvents": [
+        {
+          "kind": "branch",
+          "minStrength": 1.5
+        },
+        {
+          "kind": "branch",
+          "minStrength": 1.5
+        }
+      ],
+      "maxLoops": 0,
+      "exit": {
+        "method": "event-offset",
+        "anchorEvent": "branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": 0.5,
+        "enforce":true
+      }
+    },
+    {
+      "name": "fa-yeh",
+      "letters": ["فلقبتثنىمي", "يى"],
+      "forms": ["initial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "valley",
+          "minStrength": 1
+        }
+      ]
+    },
+    {
+      "name": "lam-alef-isol",
+      "letters": ["ل", "ا"],
+      "forms": ["initial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "double-high-branch",
+          "minStrength": 1
+        }
+      ]
+    },
+    {
+      "name": "lam-alef-fina",
+      "letters": ["ل", "ا"],
+      "forms": ["medial", "final"],
+      "requiredEvents": [
+        {
+          "kind": "high-branch",
+          "minStrength": 5
+        }
+      ],
+       "entry": {
+        "method": "event-offset",
+        "anchorEvent": "high-branch",
+        "occurrence": "last",
+        "offsetStrokeWidths": -3.0
+      }
+    }
+  ]
+}
