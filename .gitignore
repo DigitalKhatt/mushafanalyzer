@@ -3,3 +3,7 @@ output
 __pycache__
 /input/
 CMakePresets.json
+.venv
+.vscode
+/.clang-format
+/.clangd
