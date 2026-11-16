@@ -12,7 +12,7 @@ show it.
 
 Usage::
 
-    .venv/bin/python tests/test_bezier_projection.py
+    uv run tests/test_bezier_projection.py
 """
 
 import argparse

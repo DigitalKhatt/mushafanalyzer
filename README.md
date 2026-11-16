@@ -48,6 +48,7 @@ outline, its mask, and its measurements normalized to that page's qalam width.
 - [Mark templates and the optional classifier](#mark-templates-and-the-optional-classifier)
 - [Analyzing a different Mushaf](#analyzing-a-different-mushaf)
 - [Repository layout](#repository-layout)
+- [Contributing](#contributing)
 - [Related](#related)
 - [Current limitations and next steps](#current-limitations-and-next-steps)
 
@@ -225,13 +226,13 @@ rows, marked as failed, so queries cannot silently under-report the text.
 
 ### You will need
 
-- **CMake ≥ 3.16** for plain configuration, or **CMake ≥ 3.25** for the
-  checked-in macOS preset; a **C++20** compiler, **OpenCV**, and **SQLite3**
-  (Glaze is fetched automatically)
-- **Python 3.11+** with:
+- **CMake ≥ 3.24**, a **C++20** compiler, **OpenCV**, and **SQLite3** (Glaze is
+  fetched automatically)
+- **[uv](https://docs.astral.sh/uv/)** for Python 3.11+ and the Python
+  dependencies:
 
   ```bash
-  python3 -m venv .venv && .venv/bin/pip install numpy scipy opencv-python fonttools
+  uv sync --locked
   ```
 
 - **`input/quran-data.sqlite`** — the Qur'an text and page layout. This file is
@@ -244,14 +245,12 @@ rows, marked as failed, so queries cannot silently under-report the text.
 
 ### Build the C++ analyzer
 
-The checked-in preset targets macOS with Homebrew LLVM; on Linux configure
-plainly with `cmake -B build -DCMAKE_BUILD_TYPE=Release`.
-
 ```bash
-cmake --preset macos && cmake --build --preset release
+uv run cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+uv run cmake --build build
 ```
 
-That produces `build/macos/Release/mushaf_cli`.
+That produces `build/mushaf_cli`.
 
 ### About the scans
 
@@ -277,7 +276,7 @@ second dynamic program inside each word that assigns every connected component
 to a PAW and to either the body, a named mark class, or `other`.
 
 ```bash
-build/macos/Release/mushaf_cli \
+build/mushaf_cli \
   --input input/oldmedina2 \
   --out output/oldmedina2-analysis \
   --pages 3 \
@@ -311,7 +310,7 @@ keeps its components together.
 ### Inspect the output
 
 ```bash
-.venv/bin/python tools/review_segmentation.py \
+uv run tools/review_segmentation.py \
   --root output/oldmedina2-analysis --port 8878
 ```
 
@@ -349,7 +348,7 @@ The viewer exposes each processing stage as a separate layer:
 ![The segmenter's stages revealed one at a time](docs/img/paw-layers.gif)
 
 ```bash
-.venv/bin/python tools/paw_segmentation/review_paw_segmentation.py \
+uv run tools/paw_segmentation/review_paw_segmentation.py \
   --analysis output/oldmedina2-analysis \
   --page 3 --word l00_w04 \
   --templates templates/oldmadina/skeleton_templates.json \
@@ -438,12 +437,12 @@ To run the segmenter without the viewer:
 
 ```bash
 # one word
-.venv/bin/python tools/paw_segmentation/segment_paw_letters.py \
+uv run tools/paw_segmentation/segment_paw_letters.py \
   --analysis output/oldmedina2-analysis --page 3 --word l00_w04 \
   --body-join-alignment --out output/paw-segmentation
 
 # a whole page
-.venv/bin/python tools/paw_segmentation/segment_paw_letters.py \
+uv run tools/paw_segmentation/segment_paw_letters.py \
   --analysis output/oldmedina2-analysis --page 3 --batch \
   --body-join-alignment --out output/paw-segmentation-page3
 ```
@@ -459,7 +458,7 @@ To run the segmenter without the viewer:
 ## Stage 3 — build the corpus index
 
 ```bash
-.venv/bin/python tools/corpus/build_corpus.py \
+uv run tools/corpus/build_corpus.py \
   --analysis output/oldmedina2-analysis \
   --out output/corpus/corpus.sqlite \
   --pages all --jobs 8 --resume
@@ -489,7 +488,7 @@ tracing when only the metrics are required.
 ## Stage 4 — browse and measure
 
 ```bash
-.venv/bin/python tools/corpus/serve_corpus.py \
+uv run tools/corpus/serve_corpus.py \
   --db output/corpus/corpus.sqlite \
   --analysis output/oldmedina2-analysis \
   --port 8880 --viewer-port 8879
@@ -586,7 +585,8 @@ matches the same letter traced within its word mask.
 ### The viewer
 
 ```bash
-.venv/bin/python tools/tracing/vector_fit_viewer.py
+uv sync --locked --group viewer
+uv run tools/tracing/vector_fit_viewer.py
 ```
 
 Run it from the repository root (it needs `PySide6` and `matplotlib`). The left
@@ -633,7 +633,7 @@ contours through the production call chain and writes per-case overlays plus a
 per-curve fit error:
 
 ```bash
-.venv/bin/python tools/tracing/tracing_eval_harness.py --out output/eval_harness
+uv run tools/tracing/tracing_eval_harness.py --out output/eval_harness
 ```
 
 Check its `DEFAULT_MANIFEST` first: the cases are named by contour index into
@@ -902,6 +902,13 @@ templates/oldmadina/            everything specific to this Mushaf
 tests/                          regression suites: 10 CTest cases plus the corpus-index check
 docs/img/                       the figures in this file
 ```
+
+---
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the
+development setup, data requirements, tests, and pull-request guidance.
 
 ---
 

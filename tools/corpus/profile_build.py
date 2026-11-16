@@ -6,7 +6,7 @@ worth optimizing with process startup, IPC and SQLite. This runs `build_page`
 plus `normalize_page` in this process so the profile is the segmentation and
 tracing cost and nothing else.
 
-    .venv/bin/python tools/corpus/profile_build.py \
+    uv run tools/corpus/profile_build.py \
         --analysis output/oldmedina2-analysis --page 3 --words 20
 
 `--no-trace` splits the two halves apart: the difference between a run with it

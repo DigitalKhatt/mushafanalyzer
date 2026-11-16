@@ -12,7 +12,7 @@ mask -- and therefore a traced letter outline -- possible.
 
 Example::
 
-    .venv/bin/python tools/corpus/build_corpus.py \
+    uv run tools/corpus/build_corpus.py \
         --analysis output/oldmedina2-analysis \
         --out output/corpus/corpus.sqlite --pages 3 --jobs 4
 

@@ -3,7 +3,7 @@
 
 Run this from the mushafanalyzer directory, for example:
 
-    python3 tools/review_segmentation.py \
+    uv run tools/review_segmentation.py \
         --root output/oldmedina2-analysis --port 8878
 
 Then open http://127.0.0.1:8878/. Review labels are stored in

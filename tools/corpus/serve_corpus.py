@@ -15,7 +15,7 @@ filter by one, and tick k-left or k-right to paint it.
 
 Run it::
 
-    .venv/bin/python tools/corpus/serve_corpus.py \
+    uv run tools/corpus/serve_corpus.py \
         --db output/corpus/corpus.sqlite \
         --analysis output/oldmedina2-analysis --port 8880
 

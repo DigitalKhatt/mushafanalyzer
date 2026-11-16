@@ -12,7 +12,7 @@ Renders three states of the same tall stroke (l00_w00.png, contour index 4):
                     geometric elbow instead of relying on generic recursion
 
 Usage:
-  .venv/bin/python tools/demo_elongated_split_fix.py
+  uv run tools/demo_elongated_split_fix.py
 """
 import math
 from pathlib import Path

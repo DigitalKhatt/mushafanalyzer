@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.24)
 project(MushafAnalyzer LANGUAGES CXX)
 
 include(CTest)
@@ -56,6 +56,12 @@ target_compile_options(
 
 if(BUILD_TESTING)
   find_package(Python3 COMPONENTS Interpreter REQUIRED)
+  add_test(
+    NAME bezier_projection
+    COMMAND ${Python3_EXECUTABLE}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_bezier_projection.py")
+  set_tests_properties(bezier_projection PROPERTIES TIMEOUT 60)
+
   set(MUSHAF_TEST_INPUT "${CMAKE_CURRENT_SOURCE_DIR}/input/oldmedina2")
   set(MUSHAF_TEST_DATABASE "${CMAKE_CURRENT_SOURCE_DIR}/input/quran-data.sqlite")
   if(EXISTS "${MUSHAF_TEST_INPUT}" AND EXISTS "${MUSHAF_TEST_DATABASE}")

@@ -13,7 +13,7 @@ try:
     from torchvision.transforms import functional as TF
 except ImportError as error:
     raise SystemExit(
-        "Training dependencies are missing. Install tools/requirements-mark-training.txt"
+        "Training dependencies are missing. Run `uv sync --group training`."
     ) from error
 
 

@@ -9,7 +9,7 @@ by one ulp is a real regression in the thing being protected, and ``==`` on
 floats would happily hide ``-0.0`` against ``0.0``. Every REAL is therefore
 compared through its IEEE-754 bytes.
 
-    .venv/bin/python tools/corpus/compare_corpus.py ref.sqlite new.sqlite
+    uv run tools/corpus/compare_corpus.py ref.sqlite new.sqlite
 
 Exit status is 0 only when every compared table matches exactly.
 """

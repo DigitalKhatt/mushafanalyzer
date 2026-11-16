@@ -18,7 +18,7 @@ Words are ranked by a combined suspicion score so the worst offenders can be
 reviewed first (e.g. in VectorFitViewer or by cropping their PNG + overlay).
 
 Usage:
-  .venv/bin/python tools/contour_metrics_report.py output/oldmedina2-analysis/page003 --top 40
+  uv run tools/contour_metrics_report.py output/oldmedina2-analysis/page003 --top 40
 """
 import argparse
 import itertools

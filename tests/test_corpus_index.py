@@ -6,7 +6,7 @@ invariants that a downstream query depends on: every ink pixel is attributed
 to exactly one letter, every letter that has ink has an outline, ids are
 deterministic, the normalized frame round-trips, and a mark row means one mark.
 
-    .venv/bin/python tests/test_corpus_index.py \
+    uv run tests/test_corpus_index.py \
         --analysis output/oldmedina2-analysis --page 3 --words 12
 """
 

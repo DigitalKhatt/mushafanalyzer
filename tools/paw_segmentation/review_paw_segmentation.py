@@ -6,7 +6,7 @@ independent layer instead of being flattened into the exported overlay PNG.
 
 Example::
 
-    .venv/bin/python tools/paw_segmentation/review_paw_segmentation.py \
+    uv run tools/paw_segmentation/review_paw_segmentation.py \
         --analysis output/oldmedina2-analysis --page 3 --port 8879
 
 Then open http://127.0.0.1:8879/. Press ``r`` or use Reload after editing the

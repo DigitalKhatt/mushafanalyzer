@@ -1,0 +1,29 @@
+[project]
+name = "mushaf-analyzer-tools"
+version = "0.1.0"
+description = "Python tools for the Mushaf Analyzer research pipeline"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "fonttools",
+  "matplotlib",
+  "numpy",
+  "opencv-python",
+  "pillow",
+  "reportlab",
+  "requests",
+  "scipy",
+  "uharfbuzz",
+]
+
+[dependency-groups]
+viewer = [
+  "pyside6-essentials",
+]
+training = [
+  "onnx",
+  "torch",
+  "torchvision",
+]
+
+[tool.uv]
+package = false

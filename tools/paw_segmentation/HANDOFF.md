@@ -18,7 +18,7 @@ descenders interleave in x, and it never uses the known letter sequence.
 Run it:
 
 ```sh
-.venv/bin/python tools/paw_segmentation/segment_paw_letters.py \
+uv run tools/paw_segmentation/segment_paw_letters.py \
   --analysis output/oldmedina2-analysis --page 3 --batch \
   --out output/paw-segmentation-page3
 ```
@@ -537,7 +537,7 @@ and `l12_w06` from closed to open relative to event-only matching.
 Both modes are opt-in while the template set is small:
 
 ```sh
-.venv/bin/python tools/paw_segmentation/segment_paw_letters.py \
+uv run tools/paw_segmentation/segment_paw_letters.py \
   --analysis output/oldmedina2-analysis --page 3 --batch \
   --skeleton-shapes --logical-ligatures \
   --skeleton-templates templates/oldmadina/skeleton_templates.json \
@@ -547,7 +547,7 @@ Both modes are opt-in while the template set is small:
 Run the candidate-free alignment independently with:
 
 ```sh
-.venv/bin/python tools/paw_segmentation/segment_paw_letters.py \
+uv run tools/paw_segmentation/segment_paw_letters.py \
   --analysis output/oldmedina2-analysis --page 3 --batch \
   --body-join-alignment --cut-policy next-start \
   --out output/paw-body-join-page3

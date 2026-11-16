@@ -7,7 +7,7 @@ on a long chord) or is just the expected/benign shape of a tight, short
 sub-arc (small chord, low error).
 
 Usage:
-  .venv/bin/python tools/scan_clamped_handles.py output/oldmedina2-analysis/page003 --top 20
+  uv run tools/scan_clamped_handles.py output/oldmedina2-analysis/page003 --top 20
 """
 import argparse
 import json

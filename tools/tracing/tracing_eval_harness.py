@@ -26,7 +26,7 @@ multiscale inflection detector) can be judged by a numeric diff across a
 fixed case set instead of by eyeballing overlays one word at a time.
 
 Usage:
-  .venv/bin/python tools/tracing_eval_harness.py --out output/eval_harness
+  uv run tools/tracing_eval_harness.py --out output/eval_harness
 """
 import argparse
 import json

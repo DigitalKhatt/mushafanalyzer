@@ -14,7 +14,7 @@ images, so no axis flip is needed (unlike the TTF path, which flips y to
 match font em-space).
 
 Usage:
-  .venv/bin/python tools/tracing/svg_from_json_words_no_potrace.py \
+  uv run tools/tracing/svg_from_json_words_no_potrace.py \
       output/oldmedina2-analysis 3 3
 """
 import json
